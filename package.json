@@ -1,0 +1,26 @@
+{
+  "name": "practice_bdd",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "cucumber-js src/test/features --require src/test/steps/**/*.ts --require src/hooks/**/*.ts --require-module ts-node/register"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "devDependencies": {
+    "@cucumber/cucumber": "^11.3.0",
+    "@playwright/test": "^1.53.2",
+    "@types/node": "^24.0.10",
+    "@types/winston": "^2.4.4",
+    "cross-env": "^7.0.3",
+    "dotenv": "^17.1.0",
+    "ts-node": "^10.9.2"
+  },
+  "dependencies": {
+    "csv-parser": "^3.2.0",
+    "papaparse": "^5.5.3"
+  }
+}
