@@ -48,11 +48,19 @@ await loginPage.enterPassword(password);
 //  Then('the user should see the {string} and {string}', async function (expectedMessage: string, check: string) {
 //   const actualMessage = await loginPage.getLoginErrorMessage();
 //   expect(actualMessage.trim()).toContain(expectedMessage);
-// // });
+// // });s
          Then('the user should see the {string}', async function (expectedMessage:string) {
            const actualMessage = await loginPage.getLoginErrorMessage();
           expect(actualMessage.trim()).toContain(expectedMessage);
          });
 
+
         
-  
+         Then('the user logs out', async function () {
+            await loginPage.clickLogout();
+         });
+
+         Then('the user should see the Account Logout page', async function () {
+           const logoutText = await loginPage.getAccountLogoutText();
+            expect(logoutText.trim()).toBe("Account Logout");
+         });

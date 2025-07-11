@@ -14,7 +14,10 @@ export default class LoginPage {
     emailInput: "(//div[@class='form-group']//descendant::input)[1]",
     passwordInput: "(//div[@class='form-group']//following::input[1])[2]",
     loginBtn: "//input[@class='btn btn-primary']",
-    myAccountPageHeader: "//h2[text()='My Account']" 
+    myAccountPageHeader: "//h2[text()='My Account']",
+    logout:"//div[@class='list-group mb-3']/a[13]/following-sibling::a",
+    accountLogout:"//div[@id='content']/h1"
+
     }
 
   async clickMyAccount() {
@@ -62,5 +65,15 @@ async getLoginErrorMessage():Promise<string>{
 const error=await this.page.locator(".alert.alert-danger.alert-dismissible");
 await error.waitFor({state:"visible",timeout:8000})
 return await error.textContent() ?? "";
+}
+
+async clickLogout(){
+   await this.base.waitAndClick(this.LoginPageElements.logout);
+}
+
+async getAccountLogoutText():Promise<string>{
+  const logoutText = await this.page.locator(this.LoginPageElements.accountLogout);
+    await logoutText.waitFor({ state: "visible", timeout: 5000 });
+    return await logoutText.textContent() ?? "";
 }
 }

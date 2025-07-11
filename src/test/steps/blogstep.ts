@@ -30,6 +30,30 @@ When('the user enters the following comment details:', async function (dataTable
   await blogPage.enterEmail(data.email);
   await blogPage.enterComment(data.comment);
 });
+// When(
+//   'the user enters the following comment details:',
+//   { timeout: 60 * 1000 }, // 60 seconds
+//   async function (dataTable) {
+//     const commentData = dataTable.hashes();
+
+//     for (const data of commentData) {
+//       await blogPage.enterName(data.name);
+//       await blogPage.enterEmail(data.email);
+//       await blogPage.enterComment(data.comment);
+//       await blogPage.clickPostComment();
+
+//       const actualMessage = await blogPage.getSuccessMessage();
+//       expect(actualMessage.trim()).toContain(
+//         "Thank you for your comment. It has been submitted to the webmaster for approval."
+//       );
+
+//       // Optional: Reload or reselect article
+//       await pageFixture.page.reload();
+//       await blogPage.clickArticle();
+//     }
+//   }
+// );
+
 
 When('the user clicks on the Post Comment button', async function () {
   await blogPage.clickPostComment();
